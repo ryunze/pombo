@@ -16,18 +16,52 @@
 
   </head>
   <body>
+  
+    <?php include_once('app/components/navbar.php') ?>
 
-    <!-- editor -->
-    <div id="summernote"></div>
+    <div class="container">
+      <form>
+        <div class="mb-3">
+          <input type="text" class="form-control" id="title" placeholder="Title">
+        </div>
+        <!-- summernote editor -->
+        <div id="summernote"></div>
+      </form>
+      <button id="btn-save" class="btn btn-primary">
+        <span class="spinner-border spinner-border-sm d-none" id="btn-save-spiner" aria-hidden="true"></span>
+        <span>Save</span>
+      </button>
+    </div>
+
 
     <!-- init summernote -->
     <script>
-      $('#summernote').summernote({
-        placeholder: 'Hello Bootstrap 5',
-        tabsize: 2,
-        height: 100
+
+      $(document).ready(function() {
+
+        $('#summernote').summernote({
+          placeholder: 'Write your story..',
+          tabsize: 2,
+          height: 225
+        });
+
+        $('#btn-save').click(function() {
+          const title = $('#title').val();
+          const content = $('#summernote').summernote('code');
+
+          const data = {
+            title: title,
+            content: content
+          }
+          
+          console.log(data)
+
+        });
+
       });
+
+      
     </script>
-    
+
   </body>
 </html>
