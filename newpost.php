@@ -23,7 +23,6 @@
 
     <div class="container">
         <div class="d-flex align-items-center mb-3">
-            <a href="/newpost.php" class="btn btn-dark">New Post</a>
             <button id="btn-save" class="btn btn-primary ms-auto">
                 <span class="spinner-border spinner-border-sm d-none" id="btn-save-spiner" aria-hidden="true"></span>
                 <span>Save</span>
@@ -51,6 +50,7 @@
             });
 
             $('#btn-save').click(function () {
+
                 const title = $('#title').val();
                 const content = $('#summernote').summernote('code');
 
@@ -59,7 +59,17 @@
                     content: content
                 }
 
-                console.log(data)
+                $.ajax({
+                    url: '/api/post.php',
+                    method: 'post',
+                    data: JSON.stringify(data),
+                    success: (res) => {
+                        console.log(res)
+                    },
+                    error: () => {
+                        console.error('ERR')
+                    }
+                });
 
             });
 
