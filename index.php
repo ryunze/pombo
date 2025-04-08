@@ -32,7 +32,7 @@ $conn = new Conn();
 
     <div class="container">
         <div class="d-flex align-items-center mb-3">
-            <a href="/newpost.php" class="btn btn-dark">New Post</a>
+            <a href="/new-post.php" class="btn btn-dark">New Post</a>
         </div>
         <table id="table-posts" class="table table-striped" style="width:100%">
         <thead>
@@ -49,6 +49,7 @@ $conn = new Conn();
                 <td><?= $post['title']?></td>
                 <td>
                     <a href="#">Edit</a>
+                    <a href="/preview.php/post/<?= $post['id'] ?>" target="_blank">Preview</a>
                 </td>
             </tr>
             <?php endforeach ?>

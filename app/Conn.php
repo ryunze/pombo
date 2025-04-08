@@ -24,5 +24,17 @@ class Conn {
         return $rows;
     }
 
+    public function get_post($id)
+    {
+        $data = $this->db->query("SELECT * FROM posts WHERE id = '$id'");
+        $result = $data->fetchArray(SQLITE3_ASSOC);
+
+        if (!$result) {
+            return false;
+        }
+
+        return $result;
+    }
+
     
 }
